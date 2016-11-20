@@ -11,6 +11,7 @@ import UIKit
 class StoryTableViewController: UITableViewController {
 
     var stories:[Story] = []
+    var articleURLString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,22 @@ class StoryTableViewController: UITableViewController {
         cell.storySummary.text = story.summary
         cell.storyAuthor.text = story.author
         cell.storyDate.text = story.date
-        
+
         return cell
+    }
+    
+    override  func tableView(_ tableView: UITableView, didSelectRowAt
+        indexPath: IndexPath) {
+        
+        let story = stories[indexPath.row]
+        
+        articleURLString = story.shortUrl
+        
+        guard let unwrappedArticleURLString = articleURLString else { return }
+        
+        let articleURL: URL = URL(string: unwrappedArticleURLString)!
+        UIApplication.shared.open(articleURL, options: [:], completionHandler: nil)
+        
     }
     
 

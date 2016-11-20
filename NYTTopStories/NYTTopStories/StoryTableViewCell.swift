@@ -5,7 +5,6 @@
 //  Created by Eashir Arafat on 11/20/16.
 //  Copyright © 2016 Evan. All rights reserved.
 //
-
 import UIKit
 
 class StoryTableViewCell: UITableViewCell {
@@ -18,6 +17,7 @@ class StoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
