@@ -54,21 +54,7 @@ class StoryTableViewController: UITableViewController {
         return cell
     }
     
-    override  func tableView(_ tableView: UITableView, didSelectRowAt
-        indexPath: IndexPath) {
-        
-        let story = stories[indexPath.row]
-        
-        articleURLString = story.shortUrl
-        
-        guard let unwrappedArticleURLString = articleURLString else { return }
-        
-        let articleURL: URL = URL(string: unwrappedArticleURLString)!
-        UIApplication.shared.open(articleURL, options: [:], completionHandler: nil)
-        
-    }
-    
-
+ 
     
 
 }

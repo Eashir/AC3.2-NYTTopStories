@@ -9,20 +9,20 @@
 import Foundation
 
 enum StoryParseError: Error {
-    case response, title, summary, shortUrl, author, date
+    case response, title, summary,  author, date
 }
 
 class Story {
     let title: String
     let summary: String
-    let shortUrl: String
+   
     let author: String
     let date: String
     
-    init(title: String, summary: String, shortUrl: String, author: String, date: String) {
+    init(title: String, summary: String, author: String, date: String) {
         self.title = title
         self.summary = summary
-        self.shortUrl = shortUrl
+        
         self.author = author
         self.date = date
     }
@@ -47,8 +47,7 @@ class Story {
                 guard let summary = story["abstract"] as? String
                     else { throw StoryParseError.summary }
                 
-                guard let shortUrl = story["short_url"] as? String
-                    else { throw StoryParseError.shortUrl }
+                
                 
                 guard let author = story["byline"] as? String
                     else { throw StoryParseError.author }
@@ -56,7 +55,7 @@ class Story {
                 guard let date = story["published_date"] as? String
                     else { throw StoryParseError.date }
                 
-                let validStory = Story(title: title, summary: summary, shortUrl: shortUrl, author: author, date: date)
+                let validStory = Story(title: title, summary: summary, author: author, date: date)
                 
                 stories?.append(validStory)
             }
